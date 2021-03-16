@@ -26,7 +26,7 @@ var dXdY = [
 var sliceInto = 4;
 
 //We generate a random number and pass it to a variable
-var randomNumber = Math.floor(Math.random() * imageList.length + 1);
+var randomNumber = Math.floor(Math.random() * imageList.length);
 
 // With random number we generate a image name variable
 var imageSrc = "images/" + imageList[randomNumber] + ".jpg";
