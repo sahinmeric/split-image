@@ -1,22 +1,79 @@
-body {
+.wrapper {
+  width: 960px;
   margin: 0 auto;
 }
-/* TODO:find a short way to select them all */
 
-.sliced {
-  margin: 0 2px;
+header {
+  width: 960px;
+  padding: 20px;
+  margin: 10px auto;
+  border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
-.main {
-  display: flex;
-  width: 404px;
-  margin: 1% auto;
+.col {
+  float: left;
+  padding: 200px 0;
 }
 
 #left {
-  width: 300px;
+  width: 460px;
+  margin-right: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 3px;
 }
 
 #right {
-  width: 300px;
+  width: 460px;
+  margin-left: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 3px;
 }
+
+/**************************************
+CSS TO MAKE THE EXAMPLE LOOK PRETTY
+**************************************/
+
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: #2980b9;
+  color: #fff;
+  font-family: Helvetica;
+  text-align: center;
+  margin: 0;
+}
+
+/* TODO:find a short way to select them all
+
+
+
+.container {
+  display: flex;
+}
+
+.item {
+}
+
+/* #original {
+  display: flexbox;
+  width: auto;
+  height: 600px;
+} */
+
+/* .sliced {
+  margin: 0 2px;
+} */
+
+/* #left {
+  width: 500px;
+}
+
+#right {
+  width: 500px;
+} */

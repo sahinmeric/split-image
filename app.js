@@ -90,12 +90,12 @@ function split() {
 
     var slicedImage = document.createElement("img");
     slicedImage.src = parts[i];
-    var div = document.getElementById("right");
+    var div = document.getElementById("canvas");
     div.appendChild(slicedImage);
     slicedImage.setAttribute("id", "part" + [i]);
-    slicedImage.setAttribute("class", "sliced");
+    slicedImage.setAttribute("class", "item sliced");
     //style="width:128px;height:128px;" can be used also
-    slicedImage.setAttribute("width", "96", "height", "96");
+    // slicedImage.setAttribute("width", canvas.width, "height", canvas.height);
     slicedImage.setAttribute(
       "style",
       "transform: rotate(" + randomDeg * 45 + "deg)"
@@ -104,14 +104,12 @@ function split() {
 
   //TODO: for loop?
   //ENABLE IMAGE CONTROLS
-  document.getElementById("part0").addEventListener("click", rotate);
-  document.getElementById("part0").addEventListener("click", checkStatus);
-  document.getElementById("part1").addEventListener("click", rotate);
-  document.getElementById("part1").addEventListener("click", checkStatus);
-  document.getElementById("part2").addEventListener("click", rotate);
-  document.getElementById("part2").addEventListener("click", checkStatus);
-  document.getElementById("part3").addEventListener("click", rotate);
-  document.getElementById("part3").addEventListener("click", checkStatus);
+  var slicedImages = document.getElementsByClassName("sliced");
+
+  for (let i = 0; i < slicedImages.length; i++) {
+    const element = slicedImages[i];
+    element.addEventListener("click", rotate, checkStatus);
+  }
 }
 
 // TODO: for loop?
@@ -144,7 +142,7 @@ function checkStatus() {
   }
 }
 
-//TODO:remove eventlisteners before calling gameover() 
+//TODO:remove eventlisteners before calling gameover()
 //for loop to remove?
 
 //When game ends do something.
