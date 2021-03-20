@@ -104,12 +104,11 @@ function split() {
 
   //TODO: for loop?
   //ENABLE IMAGE CONTROLS
-  var slicedImages = document.getElementsByClassName("sliced");
-
-  for (let i = 0; i < slicedImages.length; i++) {
-    const element = slicedImages[i];
-    element.addEventListener("click", rotate, checkStatus);
-  }
+  //Any element with 'part' in the id will have the 'rotate' and 'checkStatus' eventListeners added
+  document.querySelectorAll("div[id*='part]").forEach(item => {
+    item.addEventListener('click', rotate);
+    item.addEventListener('click', checkStatus)
+  })
 }
 
 // TODO: for loop?
