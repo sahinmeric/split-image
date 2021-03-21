@@ -23,7 +23,7 @@ var dXdY = [
 ];
 
 //Define how many pieces we want to slice the image 4-9-16-25-36
-var sliceInto = 4;
+var sliceInto = 9;
 
 //We generate a random number and pass it to a variable
 var randomNumber = Math.floor(Math.random() * imageList.length);
@@ -45,13 +45,14 @@ var parts = [];
 
 //An instance of an Image object
 var img = new Image();
+
 //We will set image source to randomly generated image source that we created before
 img.src = imageSrc;
 
 //Split when image has loaded
 img.onload = split;
 
-//Here we are splitting the image into 4 parts
+//Here we are splitting the image into parts
 function split() {
   //we are going to divide image width and height into square root of given sliceInto value
   // for example ıf we want to divide ınto 9 pıeces , the image w and h must be divided into 3, the square root of 9
@@ -88,12 +89,19 @@ function split() {
 
     parts.push(canvas.toDataURL());
 
+    
+
+    var col = document.getElementById("right");
+    var div = document.createElement("div");
     var slicedImage = document.createElement("img");
     slicedImage.src = parts[i];
-    var div = document.getElementById("canvas");
+
+    col.appendChild(div);
     div.appendChild(slicedImage);
+
+    div.setAttribute("class","column");
     slicedImage.setAttribute("id", "part" + [i]);
-    slicedImage.setAttribute("class", "item sliced");
+    slicedImage.setAttribute("class", "sliced");
     //style="width:128px;height:128px;" can be used also
     // slicedImage.setAttribute("width", canvas.width, "height", canvas.height);
     slicedImage.setAttribute(

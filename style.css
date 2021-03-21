@@ -1,79 +1,41 @@
-.wrapper {
-  width: 960px;
-  margin: 0 auto;
-}
-
-header {
-  width: 960px;
-  padding: 20px;
-  margin: 10px auto;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-}
-
-.col {
-  float: left;
-  padding: 200px 0;
-}
-
-#left {
-  width: 460px;
-  margin-right: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 3px;
-}
-
-#right {
-  width: 460px;
-  margin-left: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 3px;
-}
-
-/**************************************
-CSS TO MAKE THE EXAMPLE LOOK PRETTY
-**************************************/
-
-*,
-*:before,
-*:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+* {
   box-sizing: border-box;
 }
 
-body {
-  background: #2980b9;
-  color: #fff;
-  font-family: Helvetica;
-  text-align: center;
-  margin: 0;
+
+/* 50% for two images in one row, 25% for 4 20% for 5 images */
+.column {
+  float: left;
+  width: 33.3%;
+  height: 33.3%;
 }
 
-/* TODO:find a short way to select them all
+.row {
+  width: 480px;
+  height: 480px;
+}
 
+/* Clearfix (clear floats) */
+/* .row::after {
+  content: "";
+  clear: both;
+  display: table;
+} */
 
-
-.container {
+.wrapper {
   display: flex;
+  width: 1000px;
+  margin: 0 auto;
 }
 
-.item {
+#original {
+  width: 480px;
+  height: 480px;
 }
 
-/* #original {
-  display: flexbox;
-  width: auto;
-  height: 600px;
-} */
 
-/* .sliced {
-  margin: 0 2px;
-} */
-
-/* #left {
-  width: 500px;
+/* 240px for 4 pieces, 160 for 9, 120px for 16, 96px for 25 */
+.sliced {
+  width: 160px;
+  height: 160px;
 }
-
-#right {
-  width: 500px;
-} */
