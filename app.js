@@ -47,7 +47,7 @@ var dXdY4 = [
 ];
 
 //Define how many pieces we want to slice the image 4-9-16-25-36
-var sliceInto = 16; //1-TODO 4-9-16-25-36
+var sliceInto = 4; //1-TODO 4-9-16-25-36
 
 //We generate a random number and pass it to a variable
 var randomNumber = 4;
@@ -84,14 +84,14 @@ function split() {
   var divider = Math.sqrt(sliceInto);
 
   var length = 480 / divider;
-  var width = "width: " + length + "px;";
-  var height = "height: " + length + "px;";
+  var width = "width: " + length + "px;"; //every sliced image width will be changed due divider. 480px is constant container width
+  var height = "height: " + length + "px;"; //every sliced image height will be changed due divider. 480px is constant container height
 
-  var dividedWidth = img.width / divider;
-  var dividedHeight = img.height / divider;
+  var widthPercentage = "width: " + 100 / divider + "%"; // % for column width 25% means 4 images will be shown per row
+  var heightPercentage = "height: " + 100 / divider + "%"; // % for column height 25% means 4 images will be shown per row
 
-  canvas.width = dividedWidth;
-  canvas.height = dividedHeight;
+  canvas.width = img.width / divider;
+  canvas.height = img.height / divider;
 
   for (let i = 0; i < sliceInto; i++) {
     //we take the array from the dXdY array of arrays and push the value pair to a newArray as a seperated value.
@@ -117,23 +117,21 @@ function split() {
         break;
     }
 
-    // we assign this seperated value pair to x and y
+    // We assign this seperated value pair to x and y
     var x = newArray[0];
     var y = newArray[1];
 
     //We generate another random number for the rotate splitted parts of the image
     var randomDeg = Math.floor(Math.random() * 3 + 1); // Random number between 1-4
 
-    //console.log(x + "  " + y);
-
     ctx.drawImage(
       this,
-      x * dividedWidth,
-      y * dividedHeight,
+      x * (img.width / divider),
+      y * (img.height / divider),
       img.width,
       img.height
     );
-    //console.log("x : " + x + " y : " +y);
+
     parts.push(canvas.toDataURL());
 
     var col = document.getElementById("right");
@@ -145,27 +143,23 @@ function split() {
     div.appendChild(slicedImage);
 
     div.setAttribute("class", "column");
+    div.setAttribute("style", widthPercentage);
+    div.setAttribute("style", heightPercentage);
     slicedImage.setAttribute("id", "part" + [i]);
     slicedImage.setAttribute("class", "sliced");
-
-    //TODO: change .sliced width and height (480 / divider)px
-    //slicedImage.setAttribute("width","240px", "height", "240px");
-
-    //TODO:change .column 100% / divider)<
+    slicedImage.setAttribute("style", width);
+    slicedImage.setAttribute("style", height);
 
     // slicedImage.setAttribute(
     //   "style",
     //   "transform: rotate(" + randomDeg * 45 + "deg)"
     // );
   }
-
-  document.querySelectorAll(".sliced").forEach((item) => {
-    item.setAttribute("style", width);
-    item.setAttribute("style", height);
+  document.querySelectorAll(".column").forEach((item) => {
+    item.setAttribute("style", widthPercentage);
+    item.setAttribute("style", heightPercentage);
   });
 
-  //TODO: for loop?
-  //ENABLE IMAGE CONTROLS
   //Any element with 'part' in the id will have the 'rotate' and 'checkStatus' eventListeners added
   document.querySelectorAll("div[id*='part]").forEach((item) => {
     item.addEventListener("click", rotate);

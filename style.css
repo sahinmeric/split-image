@@ -6,8 +6,6 @@
 /* 3- 50% for two images in one row, 25% for 4 20% for 5 images */
 .column {
   float: left;
-  width: 25%;
-  height: 25%;
 }
 
 #right {
