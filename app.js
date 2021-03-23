@@ -46,8 +46,36 @@ var dXdY4 = [
   [-3, -3],
 ];
 
+var dXdY5 = [
+  [0, 0],
+  [-1, 0],
+  [-2, 0],
+  [-3, 0],
+  [-4, 0],
+  [0, -1],
+  [-1, -1],
+  [-2, -1],
+  [-3, -1],
+  [-4, -1],
+  [0, -2],
+  [-1, -2],
+  [-2, -2],
+  [-3, -2],
+  [-4, -2],
+  [0, -3],
+  [-1, -3],
+  [-2, -3],
+  [-3, -3],
+  [-4, -3],
+  [0, -4],
+  [-1, -4],
+  [-2, -4],
+  [-3, -4],
+  [-4, -4],
+];
+
 //Define how many pieces we want to slice the image 4-9-16-25-36
-var sliceInto = 4; //1-TODO 4-9-16-25-36
+var sliceInto = 25; //1-TODO 4-9-16-25-36
 
 //We generate a random number and pass it to a variable
 var randomNumber = 4;
@@ -113,6 +141,11 @@ function split() {
           newArray.push(element);
         });
         break;
+      case 25:
+        dXdY5[i].forEach((element) => {
+          newArray.push(element);
+        });
+        break;
       default:
         break;
     }
@@ -143,10 +176,12 @@ function split() {
     div.appendChild(slicedImage);
 
     div.setAttribute("class", "column");
+    //TODO: Can we pass widthPercentage and heightPercentage together?
     div.setAttribute("style", widthPercentage);
     div.setAttribute("style", heightPercentage);
     slicedImage.setAttribute("id", "part" + [i]);
     slicedImage.setAttribute("class", "sliced");
+    //TODO:Can we pass width and height together?
     slicedImage.setAttribute("style", width);
     slicedImage.setAttribute("style", height);
 
@@ -161,7 +196,7 @@ function split() {
   });
 
   //Any element with 'part' in the id will have the 'rotate' and 'checkStatus' eventListeners added
-  document.querySelectorAll("div[id*='part]").forEach((item) => {
+  document.querySelectorAll(".sliced").forEach((item) => {
     item.addEventListener("click", rotate);
     item.addEventListener("click", checkStatus);
   });
